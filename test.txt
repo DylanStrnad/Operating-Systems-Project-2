@@ -1,0 +1,54 @@
+for (int i = 0; i < totalProcesses; ++i) {
+        for (int j = 0; j < resourceTypes; ++j) {
+            infile >> max[i][j];
+        }
+    }
+
+    for (int i = 0; i < totalProcesses; ++i) {
+        for (int j = 0; j < resourceTypes; ++j) {
+            infile >> allocation[i][j];
+        }
+    }
+
+    for (int i = 0; i < totalProcesses; ++i) {
+        infile >> available[i];
+    }
+
+    infile.close();
+
+    // Print the matrix to verify
+    cout << "Max matrix:\n";
+    for (int i = 0; i < totalProcesses; ++i) {
+        for (int j = 0; j < resourceTypes; ++j) {
+            cout << max[i][j] << " ";
+        }
+        cout << endl;
+    }
+    
+    cout << "\n" << "allocation matrix:\n";
+    for (int i = 0; i < totalProcesses; ++i) {
+        for (int j = 0; j < resourceTypes; ++j) {
+            cout << allocation[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+
+    cout << "\n" << "available matrix:\n";
+    for (int i = 0; i < resourceTypes; ++i) {
+        cout << available[i] << " ";
+    }
+
+    for (int i = 0; i < totalProcesses; ++i) {
+        for (int j = 0; j < resourceTypes; ++j) {
+            need[i][j] = max[i][j] - allocation[i][j];
+        }
+    }
+
+    cout << "\n" << "need matrix:\n";
+    for (int i = 0; i < totalProcesses; ++i) {
+        for (int j = 0; j < resourceTypes; ++j) {
+            cout << need[i][j] << " ";
+        }
+        cout << endl;
+    }
